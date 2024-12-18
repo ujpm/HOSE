@@ -1,70 +1,57 @@
-# HOSE - Hub of Social Empowerment
+# HOSE - Hub Of Social Empowerment
 
-HOSE is a dynamic platform that transforms individual environmental actions into measurable impact through gamification, community engagement, and real-time tracking.
+HOSE (pronounced as "hose") has a dual meaning:
+- In Kinyarwanda, it means "Everywhere" 🌍
+- As an abbreviation, it stands for "Hub Of Social Empowerment" 🚀
 
 ## Features
 
-### Interactive Dashboard
-- Real-time environmental impact tracking
-- Personal statistics and achievements
-- Dynamic charts and visualizations
-- Community activity feed
+- **HOSE AI**: An intelligent assistant that helps users with:
+  - Community Building
+  - Education Guidance
+  - Environmental Advisory
+  - Health & Wellness
+  - Innovation Support
 
-### Quest System
-- Daily and weekly environmental challenges
-- Progress tracking and rewards
-- Community-driven initiatives
-- Achievement badges
+- **Dashboard**: Track your impact and community engagement
 
-### Community Features
-- Real-time activity feed
-- Impact leaderboards
-- Community challenges
-- Social sharing capabilities
+- **About**: Learn more about our mission and vision
 
-## Technical Stack
+## Technology Stack
 
 - Frontend: HTML5, CSS3, JavaScript
-- Charts: Chart.js
-- Icons: Font Awesome
-- Animations: Custom CSS animations
+- AI Integration: Custom AI interface with multiple specialized modes
+- Real-time Updates: Dynamic content loading
+- Responsive Design: Mobile-first approach
 
 ## Getting Started
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/HOSE.git
+git clone [your-repo-url]
 ```
 
-2. Open `index.html` in your browser to view the main page
-3. Navigate to `dashboard/dashboard.html` to view the dashboard
+2. Open index.html in your browser to view the project
 
 ## Project Structure
 
 ```
 HOSE/
-├── components/         # Reusable components
-│   ├── nav.html       # Navigation component
-│   └── footer.html    # Footer component
-├── dashboard/         # Dashboard related files
-│   └── dashboard.html # Dashboard page
-├── js/               # JavaScript files
-│   ├── main.js       # Main JavaScript
-│   ├── dashboard.js  # Dashboard functionality
-│   └── shared.js     # Shared utilities
-├── styles/           # CSS files
-│   ├── main.css      # Main styles
-│   └── dashboard.css # Dashboard styles
-└── index.html        # Main entry point
+├── ai/                    # AI Interface
+│   ├── js/               # AI-specific JavaScript
+│   └── styles/           # AI-specific styles
+├── dashboard/            # User dashboard
+├── styles/              # Global styles
+├── js/                  # Global JavaScript
+└── index.html           # Main entry point
 ```
 
-## Recent Updates
+## Features in Development
 
-- Added interactive dashboard with real-time statistics
-- Implemented Chart.js for data visualization
-- Enhanced user interface with animations
-- Added quest and achievement systems
-- Integrated community features
+- Enhanced AI capabilities
+- Community project tracking
+- Impact measurement tools
+- Resource sharing platform
 
 ## Contributing
 
@@ -76,8 +63,10 @@ HOSE/
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for details
 
-## Contact
+## Acknowledgments
 
-Project Link: [https://github.com/yourusername/HOSE](https://github.com/yourusername/HOSE)
+- Built with ❤️ for social empowerment
+- Special thanks to our community contributors
+- Inspired by the spirit of "Everywhere" in Kinyarwanda

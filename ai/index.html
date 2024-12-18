@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOSE AI - Empowering Society Through Intelligence</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="./styles/ai.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="../" class="logo">
+                <div class="logo-icon"></div>
+                <span class="logo-text">HOSE</span>
+            </a>
+        </div>
+        <button class="hamburger" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-menu">
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+               
+                <a href="#" class="active">HOSE AI</a>
+                <a href="../dashboard/dashboard.html">Dashboard</a>
+                <a href="../about.html">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="ai-container">
+        <button class="back-btn" onclick="window.location.href='../'">
+            <i class="fas fa-arrow-left"></i>
+            Back to Home
+        </button>
+
+        <!-- AI Assistant Interface -->
+        <div class="ai-sidebar">
+            <div class="ai-welcome">
+                <h2>Welcome to HOSE AI</h2>
+                <p>Did you know? HOSE means "Everywhere" in Kinyarwanda! 🌍</p>
+                <p>As the Hub Of Social Empowerment, we're here to help you create positive impact, everywhere! 🚀</p>
+            </div>
+            <div class="ai-modes">
+                <h3>AI Modes</h3>
+                <button class="mode-btn active" data-mode="community">
+                    <i class="fas fa-users"></i>
+                    Community Builder
+                </button>
+                <button class="mode-btn" data-mode="education">
+                    <i class="fas fa-graduation-cap"></i>
+                    Education Guide
+                </button>
+                <button class="mode-btn" data-mode="environment">
+                    <i class="fas fa-leaf"></i>
+                    Environmental Advisor
+                </button>
+                <button class="mode-btn" data-mode="health">
+                    <i class="fas fa-heartbeat"></i>
+                    Health & Wellness
+                </button>
+                <button class="mode-btn" data-mode="innovation">
+                    <i class="fas fa-lightbulb"></i>
+                    Innovation Lab
+                </button>
+            </div>
+            <div class="ai-history">
+                <h3>Recent Conversations</h3>
+                <div class="history-list">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Chat Interface -->
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="current-mode">
+                    <i class="fas fa-users"></i>
+                    <span>Community Builder</span>
+                </div>
+                <div class="ai-status">
+                    <span class="status-dot"></span>
+                    HOSE AI Active
+                </div>
+            </div>
+
+            <div class="chat-messages">
+                <!-- Welcome Message -->
+                <div class="message ai-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-text">
+                            <h3>Welcome to HOSE AI! 🌟</h3>
+                            <p>I'm your intelligent partner in building a better society. Let's work together to:</p>
+                            <ul>
+                                <li>Strengthen Communities</li>
+                                <li>Enhance Education</li>
+                                <li>Protect Environment</li>
+                                <li>Improve Health & Wellness</li>
+                                <li>Drive Innovation</li>
+                            </ul>
+                            <p>Remember: HOSE means "Everywhere" in Kinyarwanda, and we're here to make positive impact everywhere! How can I assist you today?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        class="chat-input" 
+                        placeholder="Type your message here... (Shift + Enter for new line)"
+                        rows="1"
+                    ></textarea>
+                    <div class="input-actions">
+                        <button class="action-btn" title="Attach file">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                        <button class="action-btn" title="Voice input">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                    </div>
+                </div>
+                <button class="send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Context Panel -->
+        <div class="context-panel">
+            <div class="context-header">
+                <h3>Context & Resources</h3>
+                <button class="toggle-context">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="context-content">
+                <div class="context-section">
+                    <h4>Current Project</h4>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <span class="stat-label">Impact Score</span>
+                            <span class="stat-value">85/100</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Community Reach</span>
+                            <span class="stat-value">1,200+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="context-section">
+                    <h4>Related Resources</h4>
+                    <ul class="resource-list">
+                        <li>
+                            <i class="fas fa-file-pdf"></i>
+                            Community Guidelines
+                        </li>
+                        <li>
+                            <i class="fas fa-video"></i>
+                            Training Materials
+                        </li>
+                        <li>
+                            <i class="fas fa-link"></i>
+                            Success Stories
+                        </li>
+                    </ul>
+                </div>
+                <div class="context-section">
+                    <h4>Active Goals</h4>
+                    <div class="goals-list">
+                        <div class="goal-item">
+                            <div class="goal-progress" style="--progress: 75%"></div>
+                            <span>Community Engagement</span>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-progress" style="--progress: 60%"></div>
+                            <span>Sustainable Practices</span>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-progress" style="--progress: 90%"></div>
+                            <span>Education Access</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/navigation.js"></script>
+    <script src="./js/ai.js"></script>
+</body>
+</html>
