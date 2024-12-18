@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOSE - Hub of Social Empowerment</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/notice.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -16,7 +17,8 @@
             <a href="#campaigns" class="active">Campaigns</a>
             <a href="#communities">Communities</a>
             <a href="#rewards">Rewards</a>
-            <a href="#" onclick="window.location.href='dashboard/dashboard.html'" class="nav-link">Dashboard</a>
+            <a href="dashboard/dashboard.html">Dashboard</a>
+            <a href="about.html">About</a>
         </div>
         <div class="user-stats">
             <span id="points-display">0 HOSE Points</span>
@@ -247,6 +249,11 @@
 
     <footer class="footer">
         <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html">About Us</a>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+            </div>
             <p>&copy; 2024 HOSE. All rights reserved.</p>
             <div class="social-links">
                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -257,15 +264,6 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script>
-        // Handle navigation
-        document.addEventListener('DOMContentLoaded', () => {
-            const dashboardLink = document.querySelector('a[href="./dashboard/dashboard.html"]');
-            dashboardLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.location.href = './dashboard/dashboard.html';
-            });
-        });
-    </script>
+    <script src="js/notice.js"></script>
 </body>
 </html>

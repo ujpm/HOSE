@@ -1,0 +1,58 @@
+.notice-popup {
+    position: fixed;
+    bottom: -100%;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    z-index: 1000;
+    transition: bottom 0.3s ease-in-out;
+    border-left: 4px solid #4CAF50;
+}
+
+.notice-popup.show {
+    bottom: 20px;
+}
+
+.notice-content {
+    position: relative;
+}
+
+.close-notice {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #666;
+    transition: color 0.2s;
+}
+
+.close-notice:hover {
+    color: #333;
+}
+
+.notice-popup h3 {
+    margin: 0 0 10px 0;
+    color: #2C3E50;
+    font-size: 1.2em;
+}
+
+.notice-popup p {
+    margin: 8px 0;
+    color: #34495E;
+    line-height: 1.5;
+}
+
+.notice-popup small {
+    display: block;
+    margin-top: 10px;
+    color: #7F8C8D;
+}
+
+.emoji {
+    font-size: 1.2em;
+    margin: 0 2px;
+}
