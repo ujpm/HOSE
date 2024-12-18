@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOSE Dashboard</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-page">
+    <!-- Include Navigation -->
+    <div id="nav-placeholder"></div>
+
+    <main class="dashboard-content">
+        <div class="dashboard-header animate-fade-in">
+            <div class="welcome-message">
+                <h1>Welcome back, <span id="userName">Eco Warrior</span>!</h1>
+                <p>Your impact is making a difference</p>
+            </div>
+            <div class="quick-stats">
+                <div class="stat-card animate-slide-up">
+                    <i class="fas fa-star"></i>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalPoints">2,450</span>
+                        <span class="stat-label">Total Points</span>
+                    </div>
+                </div>
+                <div class="stat-card animate-slide-up" style="animation-delay: 0.1s">
+                    <i class="fas fa-trophy"></i>
+                    <div class="stat-info">
+                        <span class="stat-value" id="userLevel">Level 5</span>
+                        <span class="stat-label">Current Level</span>
+                    </div>
+                </div>
+                <div class="stat-card animate-slide-up" style="animation-delay: 0.2s">
+                    <i class="fas fa-medal"></i>
+                    <div class="stat-info">
+                        <span class="stat-value" id="userRank">Silver</span>
+                        <span class="stat-label">Current Rank</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Progress Section -->
+            <section class="dashboard-section progress-section animate-slide-up">
+                <h2>Level Progress</h2>
+                <div class="level-progress">
+                    <div class="progress-info">
+                        <span id="currentLevel">Level 5</span>
+                        <span id="nextLevel">Level 6</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="levelProgress" style="width: 75%"></div>
+                    </div>
+                    <span class="progress-text">750/1000 XP to next level</span>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="dashboard-section activity-section animate-slide-up">
+                <h2>Recent Activity</h2>
+                <div class="activity-feed" id="activityFeed">
+                    <!-- Activities will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Impact Stats -->
+            <section class="dashboard-section impact-section animate-slide-up">
+                <h2>Your Impact</h2>
+                <canvas id="impactChart"></canvas>
+            </section>
+
+            <!-- Active Quests -->
+            <section class="dashboard-section quests-section animate-slide-up">
+                <h2>Active Quests</h2>
+                <div class="quests-grid" id="questsList">
+                    <!-- Quests will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Achievements -->
+            <section class="dashboard-section achievements-section animate-slide-up">
+                <h2>Recent Achievements</h2>
+                <div class="achievements-grid" id="achievementsList">
+                    <!-- Achievements will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Community Impact -->
+            <section class="dashboard-section community-section animate-slide-up">
+                <h2>Community Impact</h2>
+                <canvas id="communityChart"></canvas>
+            </section>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../js/shared.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script>
+        // Load navigation
+        fetch('../components/nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+                // Highlight dashboard nav item
+                document.querySelector('a[href="/dashboard"]')?.classList.add('active');
+            });
+    </script>
+</body>
+</html>

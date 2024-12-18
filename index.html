@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://hose-backend.vercel.app; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; connect-src 'self' https://hose-backend.vercel.app;">
-    <title>HOSE Platform - Home</title>
+    <title>HOSE - Hub of Social Empowerment</title>
     <link rel="stylesheet" href="styles/main.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -17,21 +16,14 @@
             <a href="#campaigns" class="active">Campaigns</a>
             <a href="#communities">Communities</a>
             <a href="#rewards">Rewards</a>
+            <a href="#" onclick="window.location.href='dashboard/dashboard.html'" class="nav-link">Dashboard</a>
+        </div>
+        <div class="user-stats">
+            <span id="points-display">0 HOSE Points</span>
+            <span id="level-display">Level 1</span>
         </div>
         <div class="nav-auth">
-            <div class="user-menu hidden">
-                <span class="points">0 Points</span>
-                <button class="btn-profile">
-                    <img src="https://ui-avatars.com/api/?name=User" alt="Profile" class="avatar">
-                    <span class="username">User</span>
-                </button>
-                <div class="dropdown-menu hidden">
-                    <a href="dashboard/index.html">Dashboard</a>
-                    <a href="dashboard/profile.html">Profile</a>
-                    <a href="#" id="logoutBtn">Logout</a>
-                </div>
-            </div>
-            <a href="auth/login.html" class="btn-primary auth-button">Sign In</a>
+            <button class="btn-primary">Sign In</button>
         </div>
     </nav>
 
@@ -42,6 +34,95 @@
             <button class="btn-primary">Get Started</button>
         </div>
     </header>
+
+    <section id="points-dashboard" class="section">
+        <h2>Your HOSE Journey</h2>
+        <div class="dashboard-grid">
+            <div class="stats-card">
+                <div class="stats-header">
+                    <i class="fas fa-star"></i>
+                    <h3>Your Progress</h3>
+                </div>
+                <div class="level-progress">
+                    <div class="level-info">
+                        <span id="current-level">Level 1</span>
+                        <span id="next-level">Level 2</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="level-progress"></div>
+                    </div>
+                    <span class="points-needed" id="points-to-next-level">100 points to next level</span>
+                </div>
+                <div class="points-breakdown">
+                    <div class="point-stat">
+                        <span>Total Points</span>
+                        <span id="total-points">0</span>
+                    </div>
+                    <div class="point-stat">
+                        <span>Weekly Points</span>
+                        <span id="weekly-points">0</span>
+                    </div>
+                    <div class="point-stat">
+                        <span>Rank</span>
+                        <span id="user-rank">Novice</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <div class="stats-header">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Achievements</h3>
+                </div>
+                <div class="achievements-grid" id="achievements-list">
+                    <!-- Achievements will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <div class="stats-header">
+                    <i class="fas fa-tasks"></i>
+                    <h3>Ways to Earn Points</h3>
+                </div>
+                <div class="points-list">
+                    <div class="point-item">
+                        <span>🌱 Join Campaign</span>
+                        <span>+50 points</span>
+                    </div>
+                    <div class="point-item">
+                        <span>👥 Join Community</span>
+                        <span>+30 points</span>
+                    </div>
+                    <div class="point-item">
+                        <span>♻️ Complete Cleanup Task</span>
+                        <span>+100 points</span>
+                    </div>
+                    <div class="point-item">
+                        <span>📝 Share Impact Story</span>
+                        <span>+75 points</span>
+                    </div>
+                    <div class="point-item">
+                        <span>🤝 Help Community Member</span>
+                        <span>+25 points</span>
+                    </div>
+                    <div class="point-item">
+                        <span>🎯 Complete Daily Quest</span>
+                        <span>+40 points</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <div class="stats-header">
+                    <i class="fas fa-calendar"></i>
+                    <h3>Daily Quests</h3>
+                </div>
+                <div class="quests-list" id="daily-quests">
+                    <!-- Quests will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
 
     <main>
         <section id="campaigns" class="section">
@@ -109,24 +190,56 @@
 
         <section id="rewards" class="section">
             <h2>Available Rewards</h2>
+            <div class="rewards-categories">
+                <button class="category-btn active" data-category="all">All Rewards</button>
+                <button class="category-btn" data-category="badges">Badges</button>
+                <button class="category-btn" data-category="perks">Special Perks</button>
+                <button class="category-btn" data-category="impact">Impact Rewards</button>
+            </div>
             <div class="rewards-grid">
-                <div class="reward-card">
+                <div class="reward-card" data-category="badges">
                     <div class="reward-icon">🏆</div>
-                    <h3>HOSE Star Badge</h3>
-                    <p>1,000 Points</p>
-                    <button class="btn-secondary">Claim Reward</button>
+                    <div class="reward-content">
+                        <h3>HOSE Star Badge</h3>
+                        <p class="reward-description">Unlock special profile features and community recognition</p>
+                        <div class="reward-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                            <span>600/1000 points</span>
+                        </div>
+                        <button class="btn-secondary">Claim Reward</button>
+                    </div>
                 </div>
-                <div class="reward-card">
-                    <div class="reward-icon">📚</div>
-                    <h3>Education Grant</h3>
-                    <p>5,000 Points</p>
-                    <button class="btn-secondary">Claim Reward</button>
+
+                <div class="reward-card" data-category="perks">
+                    <div class="reward-icon">👑</div>
+                    <div class="reward-content">
+                        <h3>Community Leader</h3>
+                        <p class="reward-description">Become a moderator and guide your local community</p>
+                        <div class="reward-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 30%"></div>
+                            </div>
+                            <span>900/3000 points</span>
+                        </div>
+                        <button class="btn-secondary">Claim Reward</button>
+                    </div>
                 </div>
-                <div class="reward-card">
-                    <div class="reward-icon">🌟</div>
-                    <h3>Community Leader</h3>
-                    <p>3,000 Points</p>
-                    <button class="btn-secondary">Claim Reward</button>
+
+                <div class="reward-card" data-category="impact">
+                    <div class="reward-icon">🌳</div>
+                    <div class="reward-content">
+                        <h3>Plant a Tree</h3>
+                        <p class="reward-description">We'll plant a tree in your name through our partners</p>
+                        <div class="reward-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%"></div>
+                            </div>
+                            <span>400/500 points</span>
+                        </div>
+                        <button class="btn-secondary">Claim Reward</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -143,8 +256,16 @@
         </div>
     </footer>
 
-    <script type="module" src="js/config.js"></script>
-    <script type="module" src="js/auth.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // Handle navigation
+        document.addEventListener('DOMContentLoaded', () => {
+            const dashboardLink = document.querySelector('a[href="./dashboard/dashboard.html"]');
+            dashboardLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.href = './dashboard/dashboard.html';
+            });
+        });
+    </script>
 </body>
 </html>

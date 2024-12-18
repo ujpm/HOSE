@@ -1,183 +1,70 @@
-# HOSE Platform - Hub of Social Empowerment
+# HOSE - Hub of Social Empowerment
 
-A decentralized platform for social good, connecting communities and driving positive change through collective action.
+HOSE is a dynamic platform that transforms individual environmental actions into measurable impact through gamification, community engagement, and real-time tracking.
 
 ## Features
 
-- **User Authentication & Authorization**
-  - Secure JWT-based authentication
-  - Role-based access control
-  - Password reset functionality
+### Interactive Dashboard
+- Real-time environmental impact tracking
+- Personal statistics and achievements
+- Dynamic charts and visualizations
+- Community activity feed
 
-- **Campaign Management**
-  - Create and manage social impact campaigns
-  - Track campaign progress and impact
-  - Participant management
-  - Campaign analytics
+### Quest System
+- Daily and weekly environmental challenges
+- Progress tracking and rewards
+- Community-driven initiatives
+- Achievement badges
 
-- **Community System**
-  - Create and join communities
-  - Private and public community options
-  - Role-based community management
-  - Community activity tracking
+### Community Features
+- Real-time activity feed
+- Impact leaderboards
+- Community challenges
+- Social sharing capabilities
 
-- **Points & Rewards System**
-  - Earn points through participation
-  - Redeem points for rewards
-  - Track point history
-  - Reward management system
+## Technical Stack
 
-- **Achievement System**
-  - Unlock achievements based on participation
-  - Multiple achievement categories
-  - Progress tracking
-  - Special rewards for achievements
+- Frontend: HTML5, CSS3, JavaScript
+- Charts: Chart.js
+- Icons: Font Awesome
+- Animations: Custom CSS animations
 
-## Tech Stack
+## Getting Started
 
-### Frontend
-- HTML5, CSS3, JavaScript
-- Chart.js for analytics
-- Responsive design
-- Modern UI/UX
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/HOSE.git
+```
 
-### Backend
-- Node.js & Express.js
-- MongoDB with Mongoose
-- JWT Authentication
-- RESTful API
-- File upload support
-- Email notifications
-- Geocoding support
-- Advanced query features
-- Comprehensive error handling
+2. Open `index.html` in your browser to view the main page
+3. Navigate to `dashboard/dashboard.html` to view the dashboard
 
 ## Project Structure
 
 ```
 HOSE/
-├── frontend/                # Frontend application
-│   ├── auth/               # Authentication pages
-│   ├── dashboard/          # Dashboard components
-│   ├── styles/             # CSS stylesheets
-│   ├── js/                 # JavaScript files
-│   └── index.html          # Main entry point
-│
-├── backend/                # Backend application
-│   ├── src/
-│   │   ├── config/        # Configuration files
-│   │   ├── controllers/   # Route controllers
-│   │   ├── middleware/    # Custom middleware
-│   │   ├── models/        # Database models
-│   │   ├── routes/        # API routes
-│   │   ├── utils/         # Utility functions
-│   │   └── server.js      # Server entry point
-│   ├── public/            # Public assets
-│   └── logs/              # Application logs
-│
-└── README.md              # Project documentation
+├── components/         # Reusable components
+│   ├── nav.html       # Navigation component
+│   └── footer.html    # Footer component
+├── dashboard/         # Dashboard related files
+│   └── dashboard.html # Dashboard page
+├── js/               # JavaScript files
+│   ├── main.js       # Main JavaScript
+│   ├── dashboard.js  # Dashboard functionality
+│   └── shared.js     # Shared utilities
+├── styles/           # CSS files
+│   ├── main.css      # Main styles
+│   └── dashboard.css # Dashboard styles
+└── index.html        # Main entry point
 ```
 
-## API Endpoints
+## Recent Updates
 
-### Authentication
-- POST `/api/v1/auth/register` - Register user
-- POST `/api/v1/auth/login` - Login user
-- GET `/api/v1/auth/logout` - Logout user
-- GET `/api/v1/auth/me` - Get current user
-- PUT `/api/v1/auth/updatedetails` - Update user details
-- PUT `/api/v1/auth/updatepassword` - Update password
-- POST `/api/v1/auth/forgotpassword` - Request password reset
-- PUT `/api/v1/auth/resetpassword/:resettoken` - Reset password
-
-### Campaigns
-- GET `/api/v1/campaigns` - Get all campaigns
-- GET `/api/v1/campaigns/:id` - Get single campaign
-- POST `/api/v1/campaigns` - Create campaign
-- PUT `/api/v1/campaigns/:id` - Update campaign
-- DELETE `/api/v1/campaigns/:id` - Delete campaign
-- POST `/api/v1/campaigns/:id/join` - Join campaign
-- DELETE `/api/v1/campaigns/:id/leave` - Leave campaign
-
-### Communities
-- GET `/api/v1/communities` - Get all communities
-- GET `/api/v1/communities/:id` - Get single community
-- POST `/api/v1/communities` - Create community
-- PUT `/api/v1/communities/:id` - Update community
-- DELETE `/api/v1/communities/:id` - Delete community
-- POST `/api/v1/communities/:id/join` - Join community
-- DELETE `/api/v1/communities/:id/leave` - Leave community
-- PUT `/api/v1/communities/:id/requests/:userId` - Handle join request
-
-### Rewards
-- GET `/api/v1/rewards` - Get all rewards
-- GET `/api/v1/rewards/:id` - Get single reward
-- POST `/api/v1/rewards` - Create reward (Admin)
-- PUT `/api/v1/rewards/:id` - Update reward (Admin)
-- DELETE `/api/v1/rewards/:id` - Delete reward (Admin)
-- POST `/api/v1/rewards/:id/claim` - Claim reward
-- PUT `/api/v1/rewards/:id/claims/:userId` - Update claim status (Admin)
-
-### Achievements
-- GET `/api/v1/achievements` - Get all achievements
-- GET `/api/v1/achievements/:id` - Get single achievement
-- POST `/api/v1/achievements` - Create achievement (Admin)
-- PUT `/api/v1/achievements/:id` - Update achievement (Admin)
-- DELETE `/api/v1/achievements/:id` - Delete achievement (Admin)
-- POST `/api/v1/achievements/check` - Check user achievements
-- GET `/api/v1/achievements/user/:userId` - Get user achievements
-
-## Setup & Installation
-
-### Prerequisites
-- Node.js >= 18.0.0
-- MongoDB
-- npm or yarn
-
-### Backend Setup
-1. Navigate to backend directory:
-   ```bash
-   cd backend
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Create .env file:
-   ```
-   NODE_ENV=development
-   PORT=5000
-   MONGODB_URI=your_mongodb_uri
-   JWT_SECRET=your_jwt_secret
-   JWT_EXPIRE=30d
-   JWT_COOKIE_EXPIRE=30
-   ```
-
-4. Start the server:
-   ```bash
-   npm run dev
-   ```
-
-### Frontend Setup
-1. Navigate to frontend directory:
-   ```bash
-   cd frontend
-   ```
-
-2. Open index.html in your browser or use a local server
-
-## Deployment
-
-### Backend
-- Deploy to Render or similar platform
-- Set environment variables
-- Enable CORS for frontend domain
-
-### Frontend
-- Deploy to GitHub Pages
-- Update API base URL to production backend URL
+- Added interactive dashboard with real-time statistics
+- Implemented Chart.js for data visualization
+- Enhanced user interface with animations
+- Added quest and achievement systems
+- Integrated community features
 
 ## Contributing
 
@@ -189,4 +76,8 @@ HOSE/
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+
+Project Link: [https://github.com/yourusername/HOSE](https://github.com/yourusername/HOSE)
