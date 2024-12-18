@@ -22,19 +22,29 @@ dotenv.config();
 const app = express();
 
 // Connect to database
-connectDB();
+try {
+    await connectDB();
+} catch (error) {
+    console.error('MongoDB connection error:', error);
+}
 
 // Body parser
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Enable CORS
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true
+    origin: process.env.FRONTEND_URL || '*',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Security headers
-app.use(helmet());
+app.use(helmet({
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false
+}));
 
 // Request logging
 if (process.env.NODE_ENV === 'development') {
@@ -48,6 +58,11 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
+// Health check route
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok' });
+});
+
 // Mount routes
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
@@ -56,11 +71,24 @@ app.use('/api/v1/communities', communityRoutes);
 app.use('/api/v1/rewards', rewardRoutes);
 app.use('/api/v1/achievements', achievementRoutes);
 
+// 404 handler
+app.use((req, res) => {
+    res.status(404).json({
+        success: false,
+        error: 'Route not found'
+    });
+});
+
 // Error handler
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+    });
+}
 
-app.listen(PORT, () => {
-    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
-});
+// Export for serverless
+export default app;
