@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://hose-backend.vercel.app; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; connect-src 'self' https://hose-backend.vercel.app;">
+    <title>HOSE Platform - Home</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h1>HOSE</h1>
+        </div>
+        <div class="nav-links">
+            <a href="#campaigns" class="active">Campaigns</a>
+            <a href="#communities">Communities</a>
+            <a href="#rewards">Rewards</a>
+        </div>
+        <div class="nav-auth">
+            <div class="user-menu hidden">
+                <span class="points">0 Points</span>
+                <button class="btn-profile">
+                    <img src="https://ui-avatars.com/api/?name=User" alt="Profile" class="avatar">
+                    <span class="username">User</span>
+                </button>
+                <div class="dropdown-menu hidden">
+                    <a href="dashboard/index.html">Dashboard</a>
+                    <a href="dashboard/profile.html">Profile</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+            <a href="auth/login.html" class="btn-primary auth-button">Sign In</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Hub of Social Empowerment</h1>
+            <p>Join our community of change-makers and contribute to social good</p>
+            <button class="btn-primary">Get Started</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="campaigns" class="section">
+            <h2>Active Campaigns</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-image">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3>Environmental Clean-up</h3>
+                    <p>Join our initiative to clean local parks and beaches</p>
+                    <div class="card-stats">
+                        <span><i class="fas fa-users"></i> 150 Participants</span>
+                        <span><i class="fas fa-star"></i> 500 Points</span>
+                    </div>
+                    <button class="btn-secondary">Join Campaign</button>
+                </div>
+                <div class="card">
+                    <div class="card-image">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Education for All</h3>
+                    <p>Support children's education in underserved communities</p>
+                    <div class="card-stats">
+                        <span><i class="fas fa-users"></i> 200 Participants</span>
+                        <span><i class="fas fa-star"></i> 750 Points</span>
+                    </div>
+                    <button class="btn-secondary">Join Campaign</button>
+                </div>
+                <div class="card">
+                    <div class="card-image">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Community Health</h3>
+                    <p>Promote health awareness and support local clinics</p>
+                    <div class="card-stats">
+                        <span><i class="fas fa-users"></i> 120 Participants</span>
+                        <span><i class="fas fa-star"></i> 600 Points</span>
+                    </div>
+                    <button class="btn-secondary">Join Campaign</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="communities" class="section">
+            <h2>Active Communities</h2>
+            <div class="community-grid">
+                <div class="community-card">
+                    <h3>Environmental Warriors</h3>
+                    <p>3,500 Members</p>
+                    <button class="btn-outline">Join Community</button>
+                </div>
+                <div class="community-card">
+                    <h3>Education Champions</h3>
+                    <p>2,800 Members</p>
+                    <button class="btn-outline">Join Community</button>
+                </div>
+                <div class="community-card">
+                    <h3>Health Heroes</h3>
+                    <p>1,900 Members</p>
+                    <button class="btn-outline">Join Community</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="rewards" class="section">
+            <h2>Available Rewards</h2>
+            <div class="rewards-grid">
+                <div class="reward-card">
+                    <div class="reward-icon">🏆</div>
+                    <h3>HOSE Star Badge</h3>
+                    <p>1,000 Points</p>
+                    <button class="btn-secondary">Claim Reward</button>
+                </div>
+                <div class="reward-card">
+                    <div class="reward-icon">📚</div>
+                    <h3>Education Grant</h3>
+                    <p>5,000 Points</p>
+                    <button class="btn-secondary">Claim Reward</button>
+                </div>
+                <div class="reward-card">
+                    <div class="reward-icon">🌟</div>
+                    <h3>Community Leader</h3>
+                    <p>3,000 Points</p>
+                    <button class="btn-secondary">Claim Reward</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 HOSE. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/config.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

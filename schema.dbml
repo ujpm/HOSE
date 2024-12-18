@@ -1,0 +1,155 @@
+// Users table
+Table users {
+  id int [pk, increment]
+  username varchar [unique, not null]
+  email varchar [unique, not null]
+  password_hash varchar [not null]
+  full_name varchar
+  bio text
+  location varchar
+  profile_image varchar
+  total_hose_points int [default: 0]
+  user_level varchar // e.g., "HOSE Star", "HOSE Celebrity"
+  created_at timestamp [default: `now()`]
+  updated_at timestamp
+}
+
+// Communities table
+Table communities {
+  id int [pk, increment]
+  name varchar [not null]
+  description text
+  location varchar
+  category varchar // e.g., "waste management", "education"
+  creator_id int [ref: > users.id]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp
+}
+
+// Community Members
+Table community_members {
+  id int [pk, increment]
+  community_id int [ref: > communities.id]
+  user_id int [ref: > users.id]
+  role varchar // e.g., "admin", "moderator", "member"
+  joined_at timestamp [default: `now()`]
+  
+  indexes {
+    (community_id, user_id) [unique]
+  }
+}
+
+// Campaigns
+Table campaigns {
+  id int [pk, increment]
+  title varchar [not null]
+  description text
+  category varchar
+  start_date timestamp
+  end_date timestamp
+  community_id int [ref: > communities.id]
+  creator_id int [ref: > users.id]
+  status varchar // e.g., "active", "completed", "draft"
+  points_reward int // HOSE points awarded for participation
+  created_at timestamp [default: `now()`]
+  updated_at timestamp
+}
+
+// Campaign Participation
+Table campaign_participants {
+  id int [pk, increment]
+  campaign_id int [ref: > campaigns.id]
+  user_id int [ref: > users.id]
+  contribution_type varchar // e.g., "volunteer", "content_creator"
+  points_earned int
+  status varchar // e.g., "active", "completed"
+  joined_at timestamp [default: `now()`]
+  
+  indexes {
+    (campaign_id, user_id) [unique]
+  }
+}
+
+// Achievements/Badges
+Table achievements {
+  id int [pk, increment]
+  name varchar [not null]
+  description text
+  category varchar // e.g., "Waste Master", "Education Hero"
+  points_required int
+  icon_url varchar
+  created_at timestamp [default: `now()`]
+}
+
+// User Achievements
+Table user_achievements {
+  id int [pk, increment]
+  user_id int [ref: > users.id]
+  achievement_id int [ref: > achievements.id]
+  earned_at timestamp [default: `now()`]
+  
+  indexes {
+    (user_id, achievement_id) [unique]
+  }
+}
+
+// Content/Posts
+Table posts {
+  id int [pk, increment]
+  user_id int [ref: > users.id]
+  community_id int [ref: > communities.id]
+  campaign_id int [ref: > campaigns.id, null]
+  title varchar
+  content text
+  content_type varchar // e.g., "article", "video", "image"
+  status varchar // e.g., "published", "draft"
+  points_earned int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp
+}
+
+// Comments
+Table comments {
+  id int [pk, increment]
+  post_id int [ref: > posts.id]
+  user_id int [ref: > users.id]
+  content text
+  created_at timestamp [default: `now()`]
+  updated_at timestamp
+}
+
+// Point Transactions
+Table point_transactions {
+  id int [pk, increment]
+  user_id int [ref: > users.id]
+  points int
+  transaction_type varchar // e.g., "earned", "spent"
+  source varchar // e.g., "campaign", "post", "achievement"
+  source_id int // Reference to the source object
+  created_at timestamp [default: `now()`]
+}
+
+// Rewards
+Table rewards {
+  id int [pk, increment]
+  name varchar [not null]
+  description text
+  points_cost int
+  category varchar // e.g., "scholarship", "mentorship", "grant"
+  quantity_available int
+  created_at timestamp [default: `now()`]
+  updated_at timestamp
+}
+
+// User Rewards
+Table user_rewards {
+  id int [pk, increment]
+  user_id int [ref: > users.id]
+  reward_id int [ref: > rewards.id]
+  status varchar // e.g., "claimed", "pending", "completed"
+  claimed_at timestamp [default: `now()`]
+  
+  indexes {
+    (user_id, reward_id) [unique]
+  }
+}
