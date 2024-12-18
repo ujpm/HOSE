@@ -1,454 +1,265 @@
 /* Dashboard Layout */
-.dashboard-body {
-    display: flex;
+.dashboard-page {
+    background: #f8fafc;
     min-height: 100vh;
-    background-color: var(--background-color);
 }
 
-/* Sidebar Navigation */
-.dashboard-nav {
-    width: 280px;
-    background: white;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid var(--border-color);
-    position: fixed;
-    height: 100vh;
-    overflow-y: auto;
-}
-
-.nav-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-.nav-header h1 {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-}
-
-.toggle-btn {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.25rem;
-    cursor: pointer;
-    color: var(--text-color);
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: var(--background-color);
-    border-radius: 0.5rem;
-    margin-bottom: 2rem;
-}
-
-.user-details {
-    display: flex;
-    flex-direction: column;
-}
-
-.username {
-    font-weight: 500;
-}
-
-.points {
-    color: var(--primary-color);
-    font-size: 0.875rem;
-}
-
-.nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex-grow: 1;
-}
-
-.nav-links a {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.75rem 1rem;
-    color: var(--text-color);
-    text-decoration: none;
-    border-radius: 0.5rem;
-    transition: all 0.3s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    background: var(--primary-color);
-    color: white;
-}
-
-.nav-footer {
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.nav-footer a {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.75rem 1rem;
-    color: var(--text-color);
-    text-decoration: none;
-    border-radius: 0.5rem;
-    transition: all 0.3s;
-}
-
-.nav-footer a:hover {
-    background: var(--background-color);
-}
-
-/* Main Content Area */
-.dashboard-main {
-    flex-grow: 1;
-    margin-left: 280px;
+.dashboard-content {
+    max-width: 1400px;
+    margin: 80px auto 0;
     padding: 2rem;
 }
 
 .dashboard-header {
-    background: white;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
     margin-bottom: 2rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.welcome-message h1 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
 }
 
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+.welcome-message p {
+    color: #666;
+    font-size: 1.1rem;
 }
 
-.search-bar {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--background-color);
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-}
-
-.search-bar input {
-    border: none;
-    background: none;
-    outline: none;
-    width: 200px;
-}
-
-.btn-notification {
-    position: relative;
-    background: none;
-    border: none;
-    font-size: 1.25rem;
-    color: var(--text-color);
-    cursor: pointer;
-}
-
-.notification-badge {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: var(--primary-color);
-    color: white;
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 1rem;
-}
-
-/* Dashboard Sections */
-.dashboard-section {
-    display: none;
-}
-
-.dashboard-section.active {
-    display: block;
-}
-
-/* Stats Grid */
-.stats-grid {
+.quick-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .stat-card {
     background: white;
+    border-radius: 1rem;
     padding: 1.5rem;
-    border-radius: 0.5rem;
     display: flex;
     align-items: center;
     gap: 1rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.stat-icon {
-    width: 48px;
-    height: 48px;
-    background: var(--primary-color);
-    color: white;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
 }
 
-.stat-info h3 {
-    font-size: 0.875rem;
-    color: var(--light-text);
-    margin-bottom: 0.25rem;
+.stat-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    background: rgba(59, 130, 246, 0.1);
+    padding: 1rem;
+    border-radius: 0.8rem;
+}
+
+.stat-info {
+    flex: 1;
 }
 
 .stat-value {
+    display: block;
     font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
+    font-weight: bold;
+    color: #1a1a1a;
 }
 
-.stat-change {
-    font-size: 0.875rem;
-    color: var(--light-text);
+.stat-label {
+    color: #666;
+    font-size: 0.9rem;
 }
 
-.stat-change.positive {
-    color: var(--secondary-color);
-}
-
-/* Charts Grid */
-.charts-grid {
+.dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
-.chart-card {
+.dashboard-section {
     background: white;
+    border-radius: 1rem;
     padding: 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
-.chart-card h3 {
-    margin-bottom: 1rem;
+.dashboard-section h2 {
+    font-size: 1.25rem;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
 }
 
-/* Recent Activity */
-.recent-activity {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+/* Progress Section */
+.level-progress {
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 0.8rem;
 }
 
-.activity-list {
-    margin-top: 1rem;
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 4px;
+    transition: width 1s ease-in-out;
+}
+
+.progress-text {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Activity Feed */
+.activity-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .activity-item {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border-color);
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 0.8rem;
+    transition: transform 0.3s ease;
 }
 
-.activity-item:last-child {
-    border-bottom: none;
+.activity-item:hover {
+    transform: translateX(5px);
 }
 
-.activity-icon {
-    width: 40px;
-    height: 40px;
-    background: var(--background-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-color);
+.activity-item img {
+    width: 48px;
+    height: 48px;
+    border-radius: 0.5rem;
+    object-fit: cover;
 }
 
-.activity-details h4 {
-    font-size: 1rem;
-    margin-bottom: 0.25rem;
+/* Charts */
+.impact-section, .community-section {
+    grid-column: span 2;
 }
 
-.activity-details p {
-    color: var(--light-text);
-    font-size: 0.875rem;
-    margin-bottom: 0.25rem;
-}
-
-.activity-time {
-    color: var(--light-text);
-    font-size: 0.75rem;
-}
-
-/* Section Headers */
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-/* Campaigns Grid */
-.campaigns-grid {
+/* Quests Grid */
+.quests-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-}
-
-.campaign-list h4 {
-    margin-bottom: 1rem;
-}
-
-.campaign-cards {
-    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
 }
 
-/* Communities Grid */
-.communities-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+.quest-card {
+    background: #f8fafc;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    transition: transform 0.3s ease;
 }
 
-/* Rewards Grid */
-.rewards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+.quest-card:hover {
+    transform: translateY(-5px);
+}
+
+.quest-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 0.5rem;
+    background: rgba(59, 130, 246, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.quest-icon i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
 }
 
 /* Achievements Grid */
 .achievements-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
 }
 
-/* Settings Grid */
-.settings-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+.achievement-card {
+    text-align: center;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 0.8rem;
+    transition: transform 0.3s ease;
 }
 
-.settings-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.achievement-card:hover {
+    transform: scale(1.05);
 }
 
-/* Modal */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+.achievement-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
 }
 
-.modal.hidden {
-    display: none;
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.modal-content {
-    background: white;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    max-width: 500px;
-    width: 90%;
+.animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-    .dashboard-nav {
-        width: 80px;
-        padding: 1rem;
-    }
-
-    .dashboard-main {
-        margin-left: 80px;
-    }
-
-    .nav-header h1,
-    .user-details,
-    .nav-links span,
-    .nav-footer span {
-        display: none;
-    }
-
-    .user-info {
-        padding: 0.5rem;
-        justify-content: center;
-    }
-
-    .nav-links a,
-    .nav-footer a {
-        justify-content: center;
-        padding: 1rem;
-    }
-
-    .nav-links i,
-    .nav-footer i {
-        margin: 0;
-        font-size: 1.25rem;
-    }
-}
-
 @media (max-width: 768px) {
-    .dashboard-nav {
-        transform: translateX(-100%);
-        transition: transform 0.3s;
-        z-index: 1000;
+    .dashboard-content {
+        padding: 1rem;
     }
 
-    .dashboard-nav.active {
-        transform: translateX(0);
-    }
-
-    .dashboard-main {
-        margin-left: 0;
-    }
-
-    .toggle-btn {
-        display: block;
-    }
-
-    .charts-grid {
+    .quick-stats {
         grid-template-columns: 1fr;
     }
 
-    .campaigns-grid {
+    .dashboard-grid {
         grid-template-columns: 1fr;
+    }
+
+    .impact-section, .community-section {
+        grid-column: span 1;
     }
 }

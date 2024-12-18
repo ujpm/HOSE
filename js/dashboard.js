@@ -1,47 +1,93 @@
+// Dashboard State
+const dashboardState = {
+    user: {
+        name: 'Eco Warrior',
+        level: 5,
+        points: 2450,
+        nextLevelPoints: 3000
+    },
+    charts: {},
+    quests: [
+        {
+            title: 'Beach Guardian',
+            description: 'Clean up 5kg of beach waste',
+            icon: 'fa-water',
+            progress: 60,
+            reward: 100
+        },
+        {
+            title: 'Tree Planter',
+            description: 'Plant 3 trees this week',
+            icon: 'fa-tree',
+            progress: 33,
+            reward: 150
+        },
+        {
+            title: 'Eco Educator',
+            description: 'Share 5 environmental tips',
+            icon: 'fa-graduation-cap',
+            progress: 80,
+            reward: 75
+        }
+    ],
+    achievements: [
+        { icon: '🌊', title: 'Ocean Guardian', description: 'Clean 100kg of ocean waste' },
+        { icon: '🌳', title: 'Forest Friend', description: 'Plant 50 trees' },
+        { icon: '♻️', title: 'Recycling Pro', description: 'Recycle 1000kg of waste' },
+        { icon: '📚', title: 'Eco Educator', description: 'Share 100 environmental tips' }
+    ],
+    activities: [
+        { user: 'Sarah', action: 'completed beach cleanup', points: 50, time: '2m ago' },
+        { user: 'Mike', action: 'planted 3 trees', points: 75, time: '15m ago' },
+        { user: 'Emma', action: 'shared recycling tips', points: 30, time: '1h ago' }
+    ]
+};
+
+// Initialize Dashboard
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize user data
-    initializeUserData();
-
-    // Initialize charts
-    initializeCharts();
-
-    // Setup navigation
-    setupNavigation();
-
-    // Setup event listeners
-    setupEventListeners();
-
-    // Load initial data
-    loadDashboardData();
+    initializeDashboard();
 });
 
-// User Data Initialization
-function initializeUserData() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (!user) {
-        window.location.href = '../auth/login.html';
-        return;
-    }
-
-    // Update user info in sidebar
-    document.querySelector('.username').textContent = user.name;
-    document.querySelector('.points').textContent = `${user.points} Points`;
-    document.querySelector('.avatar').src = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}`;
+function initializeDashboard() {
+    updateUserInfo();
+    initializeCharts();
+    loadQuests();
+    loadAchievements();
+    loadActivities();
+    animateStats();
 }
 
-// Charts Initialization
+// Update User Information
+function updateUserInfo() {
+    document.getElementById('userName').textContent = dashboardState.user.name;
+    document.getElementById('totalPoints').textContent = dashboardState.user.points;
+    document.getElementById('userLevel').textContent = `Level ${dashboardState.user.level}`;
+    
+    const progress = ((dashboardState.user.points % 1000) / 1000) * 100;
+    document.getElementById('levelProgress').style.width = `${progress}%`;
+}
+
+// Initialize Charts
 function initializeCharts() {
-    // Points History Chart
-    const pointsCtx = document.getElementById('pointsChart').getContext('2d');
-    new Chart(pointsCtx, {
+    initializeImpactChart();
+    initializeCommunityChart();
+}
+
+function initializeImpactChart() {
+    const ctx = document.getElementById('impactChart')?.getContext('2d');
+    if (!ctx) return;
+
+    dashboardState.charts.impact = new Chart(ctx, {
         type: 'line',
         data: {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
             datasets: [{
-                label: 'Points Earned',
-                data: [300, 450, 600, 475, 800, 1500],
+                label: 'Environmental Impact',
+                data: [65, 78, 90, 85, 95, 110],
                 borderColor: '#3B82F6',
-                tension: 0.4
+                tension: 0.4,
+                fill: true,
+                backgroundColor: 'rgba(59, 130, 246, 0.1)'
             }]
         },
         options: {
@@ -50,19 +96,40 @@ function initializeCharts() {
                 legend: {
                     display: false
                 }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        display: false
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
             }
         }
     });
+}
 
-    // Activity Overview Chart
-    const activityCtx = document.getElementById('activityChart').getContext('2d');
-    new Chart(activityCtx, {
+function initializeCommunityChart() {
+    const ctx = document.getElementById('communityChart')?.getContext('2d');
+    if (!ctx) return;
+
+    dashboardState.charts.community = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Campaigns', 'Communities', 'Education', 'Other'],
+            labels: ['Beach Cleanup', 'Tree Planting', 'Recycling', 'Education'],
             datasets: [{
-                data: [40, 25, 20, 15],
-                backgroundColor: ['#3B82F6', '#10B981', '#8B5CF6', '#F59E0B']
+                data: [30, 25, 20, 25],
+                backgroundColor: [
+                    '#3B82F6',
+                    '#10B981',
+                    '#8B5CF6',
+                    '#F59E0B'
+                ]
             }]
         },
         options: {
@@ -71,306 +138,114 @@ function initializeCharts() {
                 legend: {
                     position: 'bottom'
                 }
-            }
+            },
+            cutout: '70%'
         }
     });
 }
 
-// Navigation Setup
-function setupNavigation() {
-    const navLinks = document.querySelectorAll('.nav-links a');
-    const sections = document.querySelectorAll('.dashboard-section');
+// Load Quests
+function loadQuests() {
+    const questsList = document.getElementById('questsList');
+    if (!questsList) return;
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetSection = link.dataset.section;
+    questsList.innerHTML = dashboardState.quests.map(quest => `
+        <div class="quest-card animate-slide-up">
+            <div class="quest-icon">
+                <i class="fas ${quest.icon}"></i>
+            </div>
+            <h3>${quest.title}</h3>
+            <p>${quest.description}</p>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: ${quest.progress}%"></div>
+            </div>
+            <div class="quest-reward">
+                <i class="fas fa-star"></i>
+                <span>${quest.reward} points</span>
+            </div>
+        </div>
+    `).join('');
 
-            // Update active states
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-
-            sections.forEach(section => {
-                section.classList.remove('active');
-                if (section.id === targetSection) {
-                    section.classList.add('active');
-                }
-            });
-
-            // Load section data if needed
-            loadSectionData(targetSection);
+    // Add click handlers
+    document.querySelectorAll('.quest-card').forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.add('quest-card-active');
+            setTimeout(() => card.classList.remove('quest-card-active'), 200);
         });
     });
 }
 
-// Event Listeners Setup
-function setupEventListeners() {
-    // Toggle sidebar on mobile
-    document.getElementById('toggleSidebar')?.addEventListener('click', () => {
-        document.querySelector('.dashboard-nav').classList.toggle('active');
-    });
-
-    // Create Campaign button
-    document.getElementById('createCampaign')?.addEventListener('click', () => {
-        showCreateCampaignModal();
-    });
-
-    // Create Community button
-    document.getElementById('createCommunity')?.addEventListener('click', () => {
-        showCreateCommunityModal();
-    });
-
-    // Logout button
-    document.getElementById('logoutBtn')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        localStorage.removeItem('user');
-        window.location.href = '../index.html';
-    });
-}
-
-// Data Loading Functions
-function loadDashboardData() {
-    // Load campaigns
-    loadCampaigns();
-    
-    // Load communities
-    loadCommunities();
-    
-    // Load rewards
-    loadRewards();
-    
-    // Load achievements
-    loadAchievements();
-}
-
-function loadSectionData(section) {
-    switch (section) {
-        case 'campaigns':
-            loadCampaigns();
-            break;
-        case 'communities':
-            loadCommunities();
-            break;
-        case 'rewards':
-            loadRewards();
-            break;
-        case 'achievements':
-            loadAchievements();
-            break;
-        case 'settings':
-            loadSettings();
-            break;
-    }
-}
-
-// Campaign Management
-function loadCampaigns() {
-    const activeCampaigns = [
-        {
-            id: 1,
-            title: 'Clean Beach Initiative',
-            description: 'Help clean local beaches',
-            participants: 150,
-            points: 500,
-            progress: 75
-        },
-        // Add more campaigns
-    ];
-
-    const pastCampaigns = [
-        {
-            id: 2,
-            title: 'Tree Planting Drive',
-            description: 'Plant trees in urban areas',
-            participants: 200,
-            points: 750,
-            status: 'Completed'
-        },
-        // Add more campaigns
-    ];
-
-    renderCampaigns(activeCampaigns, pastCampaigns);
-}
-
-// Community Management
-function loadCommunities() {
-    const communities = [
-        {
-            id: 1,
-            name: 'Environmental Warriors',
-            members: 3500,
-            description: 'Fighting for environmental causes',
-            image: 'https://source.unsplash.com/random/300x200/?nature'
-        },
-        // Add more communities
-    ];
-
-    renderCommunities(communities);
-}
-
-// Rewards System
-function loadRewards() {
-    const rewards = [
-        {
-            id: 1,
-            title: 'HOSE Star Badge',
-            points: 1000,
-            description: 'Exclusive digital badge',
-            icon: '🏆'
-        },
-        // Add more rewards
-    ];
-
-    renderRewards(rewards);
-}
-
-// Achievements System
+// Load Achievements
 function loadAchievements() {
-    const achievements = [
-        {
-            id: 1,
-            title: 'Community Champion',
-            description: 'Lead 5 successful campaigns',
-            progress: 80,
-            icon: '👑'
-        },
-        // Add more achievements
+    const achievementsList = document.getElementById('achievementsList');
+    if (!achievementsList) return;
+
+    achievementsList.innerHTML = dashboardState.achievements.map(achievement => `
+        <div class="achievement-card animate-slide-up" title="${achievement.description}">
+            <div class="achievement-icon">${achievement.icon}</div>
+            <div class="achievement-title">${achievement.title}</div>
+        </div>
+    `).join('');
+}
+
+// Load Activities
+function loadActivities() {
+    const activityFeed = document.getElementById('activityFeed');
+    if (!activityFeed) return;
+
+    activityFeed.innerHTML = dashboardState.activities.map(activity => `
+        <div class="activity-item animate-slide-up">
+            <div class="activity-content">
+                <strong>${activity.user}</strong> ${activity.action}
+                <span class="activity-time">${activity.time}</span>
+            </div>
+            <div class="activity-points">
+                <i class="fas fa-star"></i>
+                <span>+${activity.points}</span>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Animate Stats
+function animateStats() {
+    const stats = [
+        { element: 'totalPoints', value: dashboardState.user.points },
+        { element: 'userLevel', prefix: 'Level ', value: dashboardState.user.level },
+        { element: 'levelProgress', value: ((dashboardState.user.points % 1000) / 1000) * 100 }
     ];
 
-    renderAchievements(achievements);
+    stats.forEach(stat => {
+        const element = document.getElementById(stat.element);
+        if (!element) return;
+
+        if (stat.element === 'levelProgress') {
+            element.style.width = `${stat.value}%`;
+        } else {
+            let current = 0;
+            const increment = stat.value / 50;
+            const interval = setInterval(() => {
+                current += increment;
+                if (current >= stat.value) {
+                    current = stat.value;
+                    clearInterval(interval);
+                }
+                element.textContent = stat.prefix ? 
+                    `${stat.prefix}${Math.floor(current)}` : 
+                    Math.floor(current).toLocaleString();
+            }, 20);
+        }
+    });
 }
 
-// Settings Management
-function loadSettings() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (!user) return;
-
-    // Load profile settings
-    document.getElementById('profileForm').innerHTML = `
-        <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" value="${user.name}" />
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="email" value="${user.email}" />
-        </div>
-        <button type="submit" class="btn-primary">Save Changes</button>
-    `;
-
-    // Load notification settings
-    document.getElementById('notificationForm').innerHTML = `
-        <div class="form-group">
-            <label class="checkbox-label">
-                <input type="checkbox" checked />
-                Campaign Updates
-            </label>
-        </div>
-        <div class="form-group">
-            <label class="checkbox-label">
-                <input type="checkbox" checked />
-                Community Messages
-            </label>
-        </div>
-        <button type="submit" class="btn-primary">Save Preferences</button>
-    `;
-
-    // Load privacy settings
-    document.getElementById('privacyForm').innerHTML = `
-        <div class="form-group">
-            <label class="checkbox-label">
-                <input type="checkbox" checked />
-                Public Profile
-            </label>
-        </div>
-        <div class="form-group">
-            <label class="checkbox-label">
-                <input type="checkbox" checked />
-                Show Points
-            </label>
-        </div>
-        <button type="submit" class="btn-primary">Update Privacy</button>
-    `;
-}
-
-// Modal Management
-function showCreateCampaignModal() {
-    const modal = document.getElementById('createCampaignModal');
-    modal.classList.remove('hidden');
-    modal.innerHTML = `
-        <div class="modal-content">
-            <h3>Create New Campaign</h3>
-            <form id="campaignForm">
-                <div class="form-group">
-                    <label>Campaign Title</label>
-                    <input type="text" required />
-                </div>
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea required></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Target Points</label>
-                    <input type="number" required />
-                </div>
-                <div class="form-actions">
-                    <button type="button" onclick="closeModal('createCampaignModal')" class="btn-secondary">Cancel</button>
-                    <button type="submit" class="btn-primary">Create Campaign</button>
-                </div>
-            </form>
-        </div>
-    `;
-}
-
-function showCreateCommunityModal() {
-    const modal = document.getElementById('createCommunityModal');
-    modal.classList.remove('hidden');
-    modal.innerHTML = `
-        <div class="modal-content">
-            <h3>Create New Community</h3>
-            <form id="communityForm">
-                <div class="form-group">
-                    <label>Community Name</label>
-                    <input type="text" required />
-                </div>
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea required></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Category</label>
-                    <select required>
-                        <option value="environment">Environment</option>
-                        <option value="education">Education</option>
-                        <option value="health">Health</option>
-                    </select>
-                </div>
-                <div class="form-actions">
-                    <button type="button" onclick="closeModal('createCommunityModal')" class="btn-secondary">Cancel</button>
-                    <button type="submit" class="btn-primary">Create Community</button>
-                </div>
-            </form>
-        </div>
-    `;
-}
-
-function closeModal(modalId) {
-    document.getElementById(modalId).classList.add('hidden');
-}
-
-// Rendering Functions
-function renderCampaigns(active, past) {
-    // Implementation for rendering campaigns
-}
-
-function renderCommunities(communities) {
-    // Implementation for rendering communities
-}
-
-function renderRewards(rewards) {
-    // Implementation for rendering rewards
-}
-
-function renderAchievements(achievements) {
-    // Implementation for rendering achievements
-}
+// Export dashboard functionality
+window.HOSE = {
+    ...window.HOSE,
+    dashboard: {
+        updateUserInfo,
+        loadQuests,
+        loadAchievements,
+        loadActivities,
+        animateStats
+    }
+};
