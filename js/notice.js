@@ -14,6 +14,23 @@ function createNoticePopup() {
                 While the frontend is deployed, we're actively working on making the platform even smarter and more impactful!
                 <span class="emoji">🚀</span>
             </p>
+            <div class="collaboration-call">
+                <p>Want to collaborate or support this vision? Reach out!</p>
+                <div class="contact-buttons">
+                    <a href="mailto:uwizeyimanajp2@gmail.com" class="contact-btn email">
+                        <i class="fas fa-envelope"></i>
+                        Email
+                    </a>
+                    <a href="https://linkedin.com/in/ujeanpierre45" target="_blank" class="contact-btn linkedin">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn
+                    </a>
+                    <a href="tel:+250737787395" class="contact-btn phone">
+                        <i class="fas fa-phone"></i>
+                        Call
+                    </a>
+                </div>
+            </div>
             <small>Stay tuned for updates! <span class="emoji">✨</span></small>
         </div>
     `;

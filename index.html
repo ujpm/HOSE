@@ -13,29 +13,106 @@
         <div class="nav-brand">
             <h1>HOSE</h1>
         </div>
-        <div class="nav-links">
-            <a href="#campaigns" class="active">Campaigns</a>
-            <a href="#communities">Communities</a>
-            <a href="#rewards">Rewards</a>
-            <a href="dashboard/dashboard.html">Dashboard</a>
-            <a href="about.html">About</a>
-        </div>
-        <div class="user-stats">
-            <span id="points-display">0 HOSE Points</span>
-            <span id="level-display">Level 1</span>
-        </div>
-        <div class="nav-auth">
-            <button class="btn-primary">Sign In</button>
+        <button class="hamburger" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-menu">
+            <div class="nav-links">
+                <a href="./">Home</a>
+                <a href="#campaigns">Campaigns</a>
+                <a href="#communities">Communities</a>
+                <a href="#rewards">Rewards</a>
+                <a href="./dashboard/dashboard.html">Dashboard</a>
+                <a href="./about.html">About</a>
+            </div>
+            <div class="user-stats">
+                <span id="points-display">0 HOSE Points</span>
+                <span id="level-display">Level 1</span>
+            </div>
+            <div class="nav-auth">
+                <button class="btn-primary">Sign In</button>
+            </div>
         </div>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <h1>Hub of Social Empowerment</h1>
-            <p>Join our community of change-makers and contribute to social good</p>
-            <button class="btn-primary">Get Started</button>
+            <h1>Transform Your Environmental Impact</h1>
+            <p class="hero-subtitle">Join HOSE and be part of a community turning everyday actions into measurable environmental change.</p>
+            <div class="hero-cta">
+                <button class="btn-primary">Get Started</button>
+                <button class="btn-secondary">Learn More</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">10K+</span>
+                    <span class="stat-label">Active Members</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Communities</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Daily Actions</span>
+                </div>
+            </div>
         </div>
     </header>
+
+    <section class="features">
+        <h2>Why Choose HOSE?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-leaf"></i>
+                <h3>Track Your Impact</h3>
+                <p>Monitor your environmental contributions through our intuitive dashboard and see your real-world impact grow.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-users"></i>
+                <h3>Join Communities</h3>
+                <p>Connect with like-minded individuals and participate in group initiatives for greater environmental impact.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-trophy"></i>
+                <h3>Earn Rewards</h3>
+                <p>Get recognized for your environmental efforts with our points system and redeem exciting eco-friendly rewards.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Measure Progress</h3>
+                <p>Watch your environmental impact grow with detailed analytics and progress tracking.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Join HOSE</h3>
+                <p>Create your account and join our community of environmental champions.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Take Action</h3>
+                <p>Participate in campaigns and complete environmental challenges.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Track Impact</h3>
+                <p>Monitor your progress and see your contributions to environmental change.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Earn & Share</h3>
+                <p>Earn rewards and inspire others with your achievements.</p>
+            </div>
+        </div>
+    </section>
 
     <section id="points-dashboard" class="section">
         <h2>Your HOSE Journey</h2>
@@ -126,126 +203,124 @@
         </div>
     </section>
 
-    <main>
-        <section id="campaigns" class="section">
-            <h2>Active Campaigns</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-image">
-                        <i class="fas fa-tree"></i>
-                    </div>
-                    <h3>Environmental Clean-up</h3>
-                    <p>Join our initiative to clean local parks and beaches</p>
-                    <div class="card-stats">
-                        <span><i class="fas fa-users"></i> 150 Participants</span>
-                        <span><i class="fas fa-star"></i> 500 Points</span>
-                    </div>
-                    <button class="btn-secondary">Join Campaign</button>
+    <section id="campaigns" class="campaigns">
+        <h2>Active Campaigns</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-image">
+                    <i class="fas fa-tree"></i>
                 </div>
-                <div class="card">
-                    <div class="card-image">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3>Education for All</h3>
-                    <p>Support children's education in underserved communities</p>
-                    <div class="card-stats">
-                        <span><i class="fas fa-users"></i> 200 Participants</span>
-                        <span><i class="fas fa-star"></i> 750 Points</span>
-                    </div>
-                    <button class="btn-secondary">Join Campaign</button>
+                <h3>Environmental Clean-up</h3>
+                <p>Join our initiative to clean local parks and beaches</p>
+                <div class="card-stats">
+                    <span><i class="fas fa-users"></i> 150 Participants</span>
+                    <span><i class="fas fa-star"></i> 500 Points</span>
                 </div>
-                <div class="card">
-                    <div class="card-image">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>Community Health</h3>
-                    <p>Promote health awareness and support local clinics</p>
-                    <div class="card-stats">
-                        <span><i class="fas fa-users"></i> 120 Participants</span>
-                        <span><i class="fas fa-star"></i> 600 Points</span>
-                    </div>
-                    <button class="btn-secondary">Join Campaign</button>
-                </div>
+                <button class="btn-secondary">Join Campaign</button>
             </div>
-        </section>
+            <div class="card">
+                <div class="card-image">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3>Education for All</h3>
+                <p>Support children's education in underserved communities</p>
+                <div class="card-stats">
+                    <span><i class="fas fa-users"></i> 200 Participants</span>
+                    <span><i class="fas fa-star"></i> 750 Points</span>
+                </div>
+                <button class="btn-secondary">Join Campaign</button>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Community Health</h3>
+                <p>Promote health awareness and support local clinics</p>
+                <div class="card-stats">
+                    <span><i class="fas fa-users"></i> 120 Participants</span>
+                    <span><i class="fas fa-star"></i> 600 Points</span>
+                </div>
+                <button class="btn-secondary">Join Campaign</button>
+            </div>
+        </div>
+    </section>
 
-        <section id="communities" class="section">
-            <h2>Active Communities</h2>
-            <div class="community-grid">
-                <div class="community-card">
-                    <h3>Environmental Warriors</h3>
-                    <p>3,500 Members</p>
-                    <button class="btn-outline">Join Community</button>
-                </div>
-                <div class="community-card">
-                    <h3>Education Champions</h3>
-                    <p>2,800 Members</p>
-                    <button class="btn-outline">Join Community</button>
-                </div>
-                <div class="community-card">
-                    <h3>Health Heroes</h3>
-                    <p>1,900 Members</p>
-                    <button class="btn-outline">Join Community</button>
-                </div>
+    <section id="communities" class="communities">
+        <h2>Active Communities</h2>
+        <div class="community-grid">
+            <div class="community-card">
+                <h3>Environmental Warriors</h3>
+                <p>3,500 Members</p>
+                <button class="btn-outline">Join Community</button>
             </div>
-        </section>
+            <div class="community-card">
+                <h3>Education Champions</h3>
+                <p>2,800 Members</p>
+                <button class="btn-outline">Join Community</button>
+            </div>
+            <div class="community-card">
+                <h3>Health Heroes</h3>
+                <p>1,900 Members</p>
+                <button class="btn-outline">Join Community</button>
+            </div>
+        </div>
+    </section>
 
-        <section id="rewards" class="section">
-            <h2>Available Rewards</h2>
-            <div class="rewards-categories">
-                <button class="category-btn active" data-category="all">All Rewards</button>
-                <button class="category-btn" data-category="badges">Badges</button>
-                <button class="category-btn" data-category="perks">Special Perks</button>
-                <button class="category-btn" data-category="impact">Impact Rewards</button>
-            </div>
-            <div class="rewards-grid">
-                <div class="reward-card" data-category="badges">
-                    <div class="reward-icon">🏆</div>
-                    <div class="reward-content">
-                        <h3>HOSE Star Badge</h3>
-                        <p class="reward-description">Unlock special profile features and community recognition</p>
-                        <div class="reward-progress">
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 60%"></div>
-                            </div>
-                            <span>600/1000 points</span>
+    <section id="rewards" class="rewards">
+        <h2>Available Rewards</h2>
+        <div class="rewards-categories">
+            <button class="category-btn active" data-category="all">All Rewards</button>
+            <button class="category-btn" data-category="badges">Badges</button>
+            <button class="category-btn" data-category="perks">Special Perks</button>
+            <button class="category-btn" data-category="impact">Impact Rewards</button>
+        </div>
+        <div class="rewards-grid">
+            <div class="reward-card" data-category="badges">
+                <div class="reward-icon">🏆</div>
+                <div class="reward-content">
+                    <h3>HOSE Star Badge</h3>
+                    <p class="reward-description">Unlock special profile features and community recognition</p>
+                    <div class="reward-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
                         </div>
-                        <button class="btn-secondary">Claim Reward</button>
+                        <span>600/1000 points</span>
                     </div>
-                </div>
-
-                <div class="reward-card" data-category="perks">
-                    <div class="reward-icon">👑</div>
-                    <div class="reward-content">
-                        <h3>Community Leader</h3>
-                        <p class="reward-description">Become a moderator and guide your local community</p>
-                        <div class="reward-progress">
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 30%"></div>
-                            </div>
-                            <span>900/3000 points</span>
-                        </div>
-                        <button class="btn-secondary">Claim Reward</button>
-                    </div>
-                </div>
-
-                <div class="reward-card" data-category="impact">
-                    <div class="reward-icon">🌳</div>
-                    <div class="reward-content">
-                        <h3>Plant a Tree</h3>
-                        <p class="reward-description">We'll plant a tree in your name through our partners</p>
-                        <div class="reward-progress">
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 80%"></div>
-                            </div>
-                            <span>400/500 points</span>
-                        </div>
-                        <button class="btn-secondary">Claim Reward</button>
-                    </div>
+                    <button class="btn-secondary">Claim Reward</button>
                 </div>
             </div>
-        </section>
-    </main>
+
+            <div class="reward-card" data-category="perks">
+                <div class="reward-icon">👑</div>
+                <div class="reward-content">
+                    <h3>Community Leader</h3>
+                    <p class="reward-description">Become a moderator and guide your local community</p>
+                    <div class="reward-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 30%"></div>
+                        </div>
+                        <span>900/3000 points</span>
+                    </div>
+                    <button class="btn-secondary">Claim Reward</button>
+                </div>
+            </div>
+
+            <div class="reward-card" data-category="impact">
+                <div class="reward-icon">🌳</div>
+                <div class="reward-content">
+                    <h3>Plant a Tree</h3>
+                    <p class="reward-description">We'll plant a tree in your name through our partners</p>
+                    <div class="reward-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%"></div>
+                        </div>
+                        <span>400/500 points</span>
+                    </div>
+                    <button class="btn-secondary">Claim Reward</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="footer-content">
@@ -265,5 +340,6 @@
 
     <script src="js/main.js"></script>
     <script src="js/notice.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 </html>

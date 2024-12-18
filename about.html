@@ -13,13 +13,27 @@
         <div class="nav-brand">
             <h1>HOSE</h1>
         </div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="#campaigns">Campaigns</a>
-            <a href="#communities">Communities</a>
-            <a href="#rewards">Rewards</a>
-            <a href="dashboard/dashboard.html">Dashboard</a>
-            <a href="about.html" class="active">About</a>
+        <button class="hamburger" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-menu">
+            <div class="nav-links">
+                <a href="./">Home</a>
+                <a href="./#campaigns">Campaigns</a>
+                <a href="./#communities">Communities</a>
+                <a href="./#rewards">Rewards</a>
+                <a href="./dashboard/dashboard.html">Dashboard</a>
+                <a href="./about.html" class="active">About</a>
+            </div>
+            <div class="user-stats">
+                <span id="points-display">0 HOSE Points</span>
+                <span id="level-display">Level 1</span>
+            </div>
+            <div class="nav-auth">
+                <button class="btn-primary">Sign In</button>
+            </div>
         </div>
     </nav>
 
@@ -86,5 +100,8 @@
             </div>
         </div>
     </footer>
+    <script src="js/main.js"></script>
+    <script src="js/notice.js"></script>
+    <script src="js/navigation.js"></script>
 </body>
 </html>

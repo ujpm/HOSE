@@ -2,7 +2,7 @@
     position: fixed;
     bottom: -100%;
     right: 20px;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -28,6 +28,14 @@
     font-size: 24px;
     color: #666;
     transition: color 0.2s;
+    background: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .close-notice:hover {
@@ -46,13 +54,78 @@
     line-height: 1.5;
 }
 
-.notice-popup small {
-    display: block;
-    margin-top: 10px;
-    color: #7F8C8D;
+.collaboration-call {
+    margin: 15px 0;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.collaboration-call p {
+    font-weight: 500;
+    color: #2C3E50;
+    margin-bottom: 12px;
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9em;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.contact-btn.email {
+    background: #EA4335;
+}
+
+.contact-btn.linkedin {
+    background: #0077B5;
+}
+
+.contact-btn.phone {
+    background: #4CAF50;
 }
 
 .emoji {
     font-size: 1.2em;
     margin: 0 2px;
+}
+
+.notice-popup small {
+    display: block;
+    margin-top: 15px;
+    color: #7F8C8D;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .notice-popup {
+        left: 20px;
+        right: 20px;
+        max-width: none;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+    }
+
+    .contact-btn {
+        justify-content: center;
+    }
 }
